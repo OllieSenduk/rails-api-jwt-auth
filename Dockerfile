@@ -22,5 +22,10 @@ RUN gem install bundler:$BUNDLER_VERSION
 RUN bundle install
 COPY . /usr/src/app
 
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
 # Add a script to be executed every time the container starts.
 CMD RAILS_ENV=${RAILS_ENV} bundle exec rails db:create db:migrate db:seed && bundle exec rails s -p ${PORT} -b '0.0.0.0'
