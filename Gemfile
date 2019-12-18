@@ -9,8 +9,7 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
 
 gem 'jbuilder', '~> 2.5'
-gem 'devise'
-gem 'devise-jwt'
+gem 'bcrypt'
 gem 'rack-cors'
 
 group :development, :test do
