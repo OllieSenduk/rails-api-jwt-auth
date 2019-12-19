@@ -22,28 +22,31 @@ describe Api::V1::UsersController, type: :controller do
         context 'CREATE - should create a new user' do
             it 'creates a new user' do 
                 post api_v1_users_url, 
-                {
-                    user: {
-                        email: 'new-user@test.com',
-                        password: '12345678',
-                    }
-                }, as: :json
+                user_params, 
+                as: :json
+
                 expect(last_response.status).to eq 201
                 expect(User.last.email).to eq('new-user@test.com')
             end
 
             it 'will not create a user if the email is taken' do
                 post api_v1_users_url, 
-                    {
-                        user: {
-                            email: user.email,
-                            password: '12345678',
-                            something: 'testing'
-                        }
-                    }, as: :json
+                user_params(email: user.email), 
+                as: :json
 
                 expect(last_response.status).to eq 422
             end
         end
+    end
+
+    private
+
+    def user_params(email: 'new-user@test.com', password:'12345678')
+        {
+            user: {
+                email: email,
+                password: password,
+            }
+        }
     end
 end
