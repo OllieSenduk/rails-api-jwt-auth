@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
+    before_action :find_user, except: [:create]
     def show
-        render json: User.find(params[:id]), status: :ok
+        render json: @user, status: :ok
     end
 
     def create
@@ -12,10 +13,26 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
+    def update
+        if @user.update(user_params)
+            render json: @user, status: :ok
+        else
+            render json: @user.errors.messages, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        @user.destroy
+        head 204
+    end
+
     private
 
     def user_params
         params.require(:user).permit(:email, :password)
     end
 
+    def find_user
+        @user = User.find(params[:id])
+    end
 end
