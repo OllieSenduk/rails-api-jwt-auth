@@ -9,8 +9,7 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
 
 gem 'jbuilder', '~> 2.5'
-gem 'devise'
-gem 'devise-jwt'
+gem 'bcrypt'
 gem 'rack-cors'
 
 group :development, :test do
@@ -19,10 +18,12 @@ group :development, :test do
   gem "rspec-rails", "~> 3.8"
   gem "factory_bot_rails"
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
+  gem 'pry'
 end
 
 group :test do 
   gem "shoulda-matchers"
+  gem 'database_cleaner'
 end
 
 group :development do
