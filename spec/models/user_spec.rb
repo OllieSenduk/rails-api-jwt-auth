@@ -4,7 +4,7 @@ describe User, type: :model do
   let (:user) { build(:user) }
   let (:invalid_user) { build(:invalid_user) }
 
-  context 'validations' do
+  describe 'validations' do
 
     it 'is valid when email & password are present and correct' do
         expect(user.valid?).to be true

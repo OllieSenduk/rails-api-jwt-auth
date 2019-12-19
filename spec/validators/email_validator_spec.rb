@@ -9,7 +9,7 @@ describe EmailValidator do
         end.new
     end
 
-    context 'when the email is valid' do
+    describe 'when the email is valid' do
 
         it 'is a valid with regular email' do
             should_be_valid('ollie.senduk@gmail.com')
@@ -20,7 +20,7 @@ describe EmailValidator do
         end
     end
 
-    context 'when the email is invalid' do
+    describe 'when the email is invalid' do
 
         it 'is invalid with a .something at the end' do
             should_be_invalid('ollie.senduk@gmail')

@@ -4,8 +4,8 @@ describe Api::V1::UsersController, type: :controller do
     let(:user) {create(:user)}
     let(:bad_email) {'badmail.com'}
 
-    context 'CRUD actions' do
-        context 'SHOW' do
+    describe 'CRUD actions' do
+        describe 'SHOW' do
             before do 
                 get api_v1_user_url(user.id), as: :json
             end
@@ -20,7 +20,7 @@ describe Api::V1::UsersController, type: :controller do
             end
         end
 
-        context 'CREATE' do
+        describe 'CREATE' do
             it 'creates a new user' do 
                 post api_v1_users_url, 
                 user_params, 
@@ -47,7 +47,7 @@ describe Api::V1::UsersController, type: :controller do
             end
         end
 
-        context 'UPDATE' do
+        describe 'UPDATE' do
             it 'should update a users fields' do
                 patch api_v1_user_url(user.id), 
                 user_params(email: 'new@test.com'),
@@ -71,7 +71,7 @@ describe Api::V1::UsersController, type: :controller do
             end
         end
 
-        context 'DELETE' do
+        describe 'DELETE' do
             it 'should delete a user' do
                 user
                 expect{
