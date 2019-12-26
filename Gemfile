@@ -11,6 +11,7 @@ gem 'rails', '~> 6.0.1'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'rack-cors'
+gem 'jwt'
 
 group :development, :test do
   gem 'dotenv-rails'
