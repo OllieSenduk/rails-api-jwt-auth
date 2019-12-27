@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/fast-jsonapi/fast_jsonapi
+  revision: c305b699a970ba60e77ba5d7d1f962390bcdc363
+  specs:
+    fast_jsonapi (1.6.0)
+      activesupport (>= 4.2)
+
+GIT
   remote: https://github.com/stympy/faker.git
   revision: a1c672930811d6bf71ce522c522bc255c345a6b8
   branch: master
@@ -222,6 +229,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker!
+  fast_jsonapi (~> 1.6.0)!
   jbuilder (~> 2.5)
   jwt
   listen (>= 3.0.5, < 3.2)

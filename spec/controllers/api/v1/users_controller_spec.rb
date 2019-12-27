@@ -16,7 +16,7 @@ describe Api::V1::UsersController, type: :controller do
 
             it 'should contain the correct information' do
                 user_json = parse_response_json
-                expect(user.email).to eq(user_json['email'])
+                expect(user.email).to eq(user_json['data']['attributes']['email'])
             end
         end
 
