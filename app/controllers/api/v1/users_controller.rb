@@ -1,5 +1,7 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :find_user, except: [:create]
+    before_action :find_user, except: %[create]
+    before_action :check_owner, only: %[update destroy]
+
     def show
         render json: @user, status: :ok
     end
@@ -27,6 +29,10 @@ class Api::V1::UsersController < ApplicationController
     end
 
     private
+
+    def check_owner
+        head :forbidden unless @user.id == current_user&.id
+    end
 
     def user_params
         params.require(:user).permit(:email, :password)
